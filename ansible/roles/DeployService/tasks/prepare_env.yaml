@@ -1,0 +1,9 @@
+- name: Create service directory
+  win_file:
+    path: "{{ dest_path }}"
+    state: directory
+
+- name: Create log directory
+  win_file:
+    path: "{{ logs_path }}"
+    state: directory

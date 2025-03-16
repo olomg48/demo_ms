@@ -1,0 +1,9 @@
+- name: Download files from gcp bucket
+  google.cloud.gcp_storage_object:
+    action: download
+    bucket: olomg-bucket
+    src: "{{ application }}_{{ version }}"
+    dest: "{{ dest_path }}"
+    project: My First Project
+    auth_kind: serviceaccount
+    service_account_file: "files/central-apex-450419-r2-b716b5e92620.json"

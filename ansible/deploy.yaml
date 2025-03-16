@@ -1,0 +1,5 @@
+- hosts: serwis
+  gather_facts: no
+  tasks:
+    - name: Deploy service
+      include_role: DeployService

@@ -1,0 +1,3 @@
+application: serwis
+dest_path: C:\SERVICE\demo_service
+logs_path: C:\LOG
