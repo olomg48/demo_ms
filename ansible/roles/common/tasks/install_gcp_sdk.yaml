@@ -1,0 +1,31 @@
+- name: Pobierz instalator Google Cloud SDK
+  win_get_url:
+    url: "https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe"
+    dest: "C:\\temp\\GoogleCloudSDKInstaller.exe"
+
+- name: Uruchom instalator Google Cloud SDK
+  win_package:
+    path: "C:\\temp\\GoogleCloudSDKInstaller.exe"
+    arguments: "/S"
+    state: present
+
+- name: Dodaj Google Cloud SDK do zmiennej PATH (Windows)
+  win_environment:
+    name: PATH
+    value: "C:\\Program Files (x86)\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
+    state: present
+    level: machine
+
+- name: Get key file from repo
+  win_copy:
+    src: central-apex-450419-r2-b716b5e92620.json
+    dest: C:\temp\central-apex-450419-r2-b716b5e92620.json
+
+- name: Skonfiguruj autoryzację GCP z pliku JSON
+  win_shell: |
+    gcloud auth activate-service-account --key-file="C:\temp\central-apex-450419-r2-b716b5e92620.json"
+
+- name: sprzątanie
+  win_file:
+    path: C:\temp\central-apex-450419-r2-b716b5e92620.json
+    state: absent

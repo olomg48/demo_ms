@@ -7,3 +7,14 @@
   win_file:
     path: "{{ logs_path }}"
     state: directory
+
+- name: Check if GCP SDK is installed
+  win_shell: gcloud --version
+  ignore_errors: true
+  register: gcp_sdk
+
+- name: Install SDK
+  include_role:
+    name: common
+    tasks_from: install_gcp_sdk.yaml
+  when: gcp_sdk.rc != 0

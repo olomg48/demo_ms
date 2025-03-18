@@ -1,13 +1,17 @@
 - name: Przygotowanie środowiska
   include_tasks: prepare_env.yaml
 
+- name: Stop/stworzenie serwisu
+  include_tasks: manage_service.yaml
+  vars:
+    serwis_status: stopped
+
 - name: Pobranie paczki
   include_role: 
     name: common
     tasks_from: get_files.yaml
 
-#- name: Sprawdzenie wymagań
-#  include_tasks: check_prerequisits.yaml
-  
 - name: Uruchomienie serwisu
   include_tasks: manage_service.yaml
+  vars:
+    serwis_status: started

@@ -2,4 +2,4 @@
   win_service:
     name: demo_service
     path: "{{ dest_path}}\\windows_service.exe"
-    state: stopped
+    state: "{{ serwis_status }}"

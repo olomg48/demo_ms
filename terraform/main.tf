@@ -96,6 +96,8 @@ resource "google_compute_instance" "srv-vm-1" {
     }
   }
   allow_stopping_for_update = true
-
+  metadata = {
+      windows-startup-script-ps1 = file("windows_init.ps1")
+    } 
 }
 
