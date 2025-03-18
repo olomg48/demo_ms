@@ -11,6 +11,11 @@
     name: common
     tasks_from: get_files.yaml
 
+- name: Pobranie paczki
+  include_role: 
+    name: common
+    tasks_from: config_gcp.yaml
+
 - name: Uruchomienie serwisu
   include_tasks: manage_service.yaml
   vars:
