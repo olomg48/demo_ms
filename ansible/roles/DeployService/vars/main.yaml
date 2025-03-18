@@ -1,3 +1,6 @@
 application: serwis
 dest_path: C:\SERVICE\demo_service
 logs_path: C:\LOG
+
+prerequisists:
+  - "https://download.visualstudio.microsoft.com/download/pr/7444dcdc-e9c7-4c57-99a2-d008591f7a7c/f70db476b95c7ed6850836b5c2e91e96/windowsdesktop-runtime-9.0.0-win-x64.exe"

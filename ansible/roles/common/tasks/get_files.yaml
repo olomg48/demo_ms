@@ -1,4 +1,4 @@
 - name: Download files from gcp bucket
   win_shell: |
-    "gcloud storage cp gs://olomg-bucket/{{ application }}_{{ version }} {{ dest_path }}"
+    "gcloud storage cp gs://olomg-bucket/{{ application }}_{{ version }}/* {{ dest_path }}"
 

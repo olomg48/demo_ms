@@ -31,53 +31,53 @@ resource "google_compute_instance" "ansible-host" {
 
 
 
-resource "google_compute_instance" "iis-vm-1" {
-  provider = google
-  name = "iis-vm-1"
-  machine_type = "e2-medium"
-  network_interface {
-    network = "default"
-    access_config {}
-  }
-  tags = ["get-internet-access"]
-  boot_disk {
-    initialize_params {
-      image = "windows-2022-core"
-      
-    }
-  }
-  allow_stopping_for_update = true
-
-  metadata = {
-    windows-startup-script-ps1 = file("iis_install.ps1")
-
-  }  
-}
-
-
-
-resource "google_compute_instance" "iis-vm-2" {
-  provider = google
-  name = "iis-vm-2"
-  machine_type = "e2-medium"
-  network_interface {
-    network = "default"
-    access_config {}
-  }
-  tags = ["get-internet-access"]
-  boot_disk {
-    initialize_params {
-      image = "windows-2022-core"
-      
-    }
-  }
-  allow_stopping_for_update = true
-
-  metadata = {
-    windows-startup-script-ps1 = file("iis_install.ps1")
-  }  
-}
-
+# resource "google_compute_instance" "iis-vm-1" {
+#   provider = google
+#   name = "iis-vm-1"
+#   machine_type = "e2-medium"
+#   network_interface {
+#     network = "default"
+#     access_config {}
+#   }
+#   tags = ["get-internet-access"]
+#   boot_disk {
+#     initialize_params {
+#       image = "windows-2022-core"
+#       
+#     }
+#   }
+#   allow_stopping_for_update = true
+# 
+#   metadata = {
+#     windows-startup-script-ps1 = file("iis_install.ps1")
+# 
+#   }  
+# }
+# 
+# 
+# 
+# resource "google_compute_instance" "iis-vm-2" {
+#   provider = google
+#   name = "iis-vm-2"
+#   machine_type = "e2-medium"
+#   network_interface {
+#     network = "default"
+#     access_config {}
+#   }
+#   tags = ["get-internet-access"]
+#   boot_disk {
+#     initialize_params {
+#       image = "windows-2022-core"
+#       
+#     }
+#   }
+#   allow_stopping_for_update = true
+# 
+#   metadata = {
+#     windows-startup-script-ps1 = file("iis_install.ps1")
+#   }  
+# }
+# 
 
 
 resource "google_compute_instance" "srv-vm-1" {
@@ -99,5 +99,9 @@ resource "google_compute_instance" "srv-vm-1" {
   metadata = {
       windows-startup-script-ps1 = file("windows_init.ps1")
     } 
+  provisioner "file" {
+    source      = "files/central-apex-450419-r2-b716b5e92620.json"
+    destination = "C:\\temp\\central-apex-450419-r2-b716b5e92620.json"
+  }
 }
 
