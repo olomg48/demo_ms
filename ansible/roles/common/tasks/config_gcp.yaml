@@ -1,0 +1,13 @@
+- name: Get key file from repo
+  win_copy:
+    src: central-apex-450419-r2-b716b5e92620.json
+    dest: C:\temp\central-apex-450419-r2-b716b5e92620.json
+
+- name: Skonfiguruj autoryzację GCP z pliku JSON
+  win_shell: |
+    gcloud auth activate-service-account --key-file="C:\temp\central-apex-450419-r2-b716b5e92620.json"
+
+- name: sprzątanie
+  win_file:
+    path: C:\temp\central-apex-450419-r2-b716b5e92620.json
+    state: absent
