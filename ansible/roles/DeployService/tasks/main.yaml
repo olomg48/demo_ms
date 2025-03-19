@@ -1,15 +1,20 @@
 - name: Przygotowanie środowiska
   include_tasks: prepare_env.yaml
 
-- name: Stop/stworzenie serwisu
-  include_tasks: manage_service.yaml
-  vars:
-    serwis_status: stopped
+- name: Check if authenticated
+  win_shell: gcloud auth list --filter=status:ACTIVE --format="value(account)"
+  register: gcp_auth
 
 - name: Konfiguracja GCP SDK
   include_role: 
     name: common
     tasks_from: config_gcp.yaml
+  when: gcp_auth.stdout == ""
+
+- name: Stop/stworzenie serwisu
+  include_tasks: manage_service.yaml
+  vars:
+    serwis_status: stopped
 
 - name: Pobranie paczki
   include_role: 

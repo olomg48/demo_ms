@@ -1,13 +1,13 @@
-- name: Check if authenticated
-  win_shell: gcloud auth list --filter=status:ACTIVE --format="value(account)"
-  register: gcp_auth
+- name: Download SA key
+  win_get_url: 
+    url: "{{ json_url }}"
+    dest: "C:\\temp\\{{ json_name }}"
+
 - name: Skonfiguruj autoryzację GCP z pliku JSON
   win_shell: |
-    gcloud auth activate-service-account --key-file="C:\temp\central-apex-450419-r2-b716b5e92620.json"
-  when: gcp_auth.stdout == ""
+    gcloud auth activate-service-account --key-file="C:\\temp\\{{ json_name }}"
 
 - name: sprzątanie
   win_file:
-    path: C:\temp\central-apex-450419-r2-b716b5e92620.json
+    path: "C:\\temp\\{{ json_name }}"
     state: absent
-  when: gcp_auth.stdout == ""

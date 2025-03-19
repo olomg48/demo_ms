@@ -99,9 +99,6 @@ resource "google_compute_instance" "srv-vm-1" {
   metadata = {
       windows-startup-script-ps1 = file("windows_init.ps1")
     } 
-  provisioner "file" {
-    source      = "files/central-apex-450419-r2-b716b5e92620.json"
-    destination = "C:\\temp\\central-apex-450419-r2-b716b5e92620.json"
-  }
+
 }
 
