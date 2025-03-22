@@ -1,0 +1,11 @@
+- name: Download installer
+  win_shell: |
+    "{{ item.link }} C:\prerequisits\"
+
+
+- name: Zainstaluj .NET 9.0 Runtime
+  win_package:
+    path: "C:\\prerequisits\\{{ item.link | win_basename}}"
+    arguments: "/quiet /norestart"
+    state: present
+    product_id: "{{ item.product_id }}"

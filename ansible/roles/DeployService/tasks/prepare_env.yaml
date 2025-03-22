@@ -3,6 +3,16 @@
     path: "{{ dest_path }}"
     state: directory
 
+- name: Create temp directory
+  win_file:
+    path: C:\temp
+    state: directory
+
+- name: Create prerequisists directory
+  win_file:
+    path: C:\prerequisists
+    state: directory
+
 - name: Create log directory
   win_file:
     path: "{{ logs_path }}"
@@ -20,17 +30,7 @@
   when: gcp_sdk.rc != 0
 
   
-- name: Pobierz instalator .NET 9.0 Runtime
-  win_get_url:
-    url: "https://download.visualstudio.microsoft.com/download/pr/7444dcdc-e9c7-4c57-99a2-d008591f7a7c/f70db476b95c7ed6850836b5c2e91e96/windowsdesktop-runtime-9.0.0-win-x64.exe"
-    dest: "C:\\temp\\dotnet-runtime-9.0.exe"
 
-- name: Zainstaluj .NET 9.0 Runtime
-  win_package:
-    path: "C:\\temp\\dotnet-runtime-9.0.exe"
-    arguments: "/quiet /norestart"
-    state: present
-    product_id: '{B6D8C97F-B117-45A0-A7CF-3921AF55168C}'
 
 
 
