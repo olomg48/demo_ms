@@ -8,9 +8,9 @@
     path: C:\temp
     state: directory
 
-- name: Create prerequisists directory
+- name: Create prerequisits directory
   win_file:
-    path: C:\prerequisists
+    path: C:\prerequisits
     state: directory
 
 - name: Create log directory
@@ -29,7 +29,16 @@
     tasks_from: install_gcp_sdk.yaml
   when: gcp_sdk.rc != 0
 
-  
+- name: Download installer
+  win_shell: |
+    gcloud storage cp gs://olomg-bucket/prerequisits_serwis/dotnet9.exe C:\prerequisits\dotnet9.exe
+
+- name: Zainstaluj .NET 9.0 Runtime
+  win_package:
+    path: C:\\prerequisits\dotnet9.exe
+    arguments: "/quiet /reboot"
+    state: present
+    product_id: '{B6D8C97F-B117-45A0-A7CF-3921AF55168C}'
 
 
 

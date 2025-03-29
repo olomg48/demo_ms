@@ -2,7 +2,4 @@ application: serwis
 dest_path: C:\SERVICE\demo_service
 logs_path: C:\LOG
 
-prerequisists:
-  - link: "gs://olomg-bucket/{{ application }}_prerequisits/dotnet9.exe"
-    product_id: '{B6D8C97F-B117-45A0-A7CF-3921AF55168C}'
 
