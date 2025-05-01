@@ -6,7 +6,7 @@ all:
           hosts:
             iis-vm-1:
             iis-vm-2:
-        serwis:
+        service:
           hosts:
             srv-vm-1: 
 
