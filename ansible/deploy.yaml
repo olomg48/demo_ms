@@ -1,6 +1,11 @@
 - hosts: service
   gather_facts: no
   tasks:
+    - name: Config gcp
+      include_role:
+        name: common
+        tasks_from: config_gcp.yaml
+
     - name: Deploy service
       include_role: 
         name: DeployService

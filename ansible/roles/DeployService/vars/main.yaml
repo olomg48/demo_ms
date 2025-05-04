@@ -1,4 +1,4 @@
-application: serwis
+application: service
 dest_path: C:\SERVICE\demo_service
 logs_path: C:\LOG
 

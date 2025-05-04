@@ -1,4 +1,4 @@
-- name: Stop/create service
+- name: Manage service
   win_service:
     name: demo_service
     path: "{{ dest_path}}\\windows_service.exe"
