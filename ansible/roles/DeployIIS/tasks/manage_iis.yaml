@@ -2,15 +2,18 @@
   win_iis_webapppool:
     name: lublinms_demo.pl
     state: "{{ pool_status }}"
+    attributes:
+      autoStart: yes
+      startMode: AlwaysRunning
 
 
 - name: Ensure default web site is absent
-  win_iis_webstie:
+  win_iis_website:
     name: Default Web Site
     state: absent
 
 - name: Create site
-  win_iis_webstie:
+  win_iis_website:
     name: lublinms_demo.pl
     state: started
     port: 80
