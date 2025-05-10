@@ -3,3 +3,7 @@ dest_path: C:\inetpub\wwwroot\lublinms_demo.pl
 logs_path: C:\LOG_IIS
 
 
+prerequisits:
+  - path: C:\prerequisits\hosting_bundle_8.0.12.exe
+    product_code: "{218673b6-7337-4d49-bc41-b4ccb7e34802}"
+    installer_path: gs://olomg-bucket/prerequisits_iis/hosting_bundle_8.0.12.exe

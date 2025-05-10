@@ -2,4 +2,7 @@ application: service
 dest_path: C:\SERVICE\demo_service
 logs_path: C:\LOG
 
-
+prerequisits:
+  - path: C:\prerequisits\dotnet9.0.3.exe
+    product_code: "{c8760728-04a2-4c48-b207-61c8dc98f639}"
+    installer_path: gs://olomg-bucket/prerequisits_service/dotnet9.0.3.exe

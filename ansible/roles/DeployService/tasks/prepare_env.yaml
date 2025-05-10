@@ -23,16 +23,8 @@
     tasks_from: config_gcp.yaml
   when: gcp_auth.stdout == ""
 
-- name: Download installer
-  win_shell: |
-    gcloud storage cp gs://olomg-bucket/prerequisits_serwis/dotnet9.0.3.exe C:\prerequisits\dotnet9.0.3.exe
 
-- name: Zainstaluj .NET 9.0 Runtime
-  win_package:
-    path: C:\\prerequisits\dotnet9.0.3.exe
-    arguments: "/quiet"
-    state: present
-    product_id: '{c8760728-04a2-4c48-b207-61c8dc98f639}'
+
     
 
 

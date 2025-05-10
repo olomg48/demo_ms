@@ -19,3 +19,9 @@
   win_file:
     path: "{{ logs_path }}"
     state: directory
+
+- name: Install prerequisits
+  include_tasks: install_prereq.yaml
+  loop: "{{ prerequisits }}"
+  loop_control:
+    loop_var: prereq

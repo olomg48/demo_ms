@@ -3,6 +3,12 @@
     name: lublinms_demo.pl
     state: "{{ pool_status }}"
 
+
+- name: Ensure default web site is absent
+  win_iis_webstie:
+    name: Default Web Site
+    state: absent
+
 - name: Create site
   win_iis_webstie:
     name: lublinms_demo.pl

@@ -1,0 +1,17 @@
+- name: Block install single prerequisite
+  block:
+    - name: Install single prerequisite task
+      win_package:
+        path: "{{ prereq.path }}"
+        product_id: "{{ prereq.product_code }}"
+        state: preent
+  rescue:
+    - name: Rescue download prerequisite
+      win_shell: |
+        gcloud storage cp {{ prereq.installer_path }} {{ prereq.path }}
+
+    - name: Rescue install single prerequisite task
+      win_package:
+        path: "{{ prereq.path }}"
+        product_id: "{{ prereq.product_code }}"
+        state: preent
