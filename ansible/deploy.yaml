@@ -1,4 +1,4 @@
-- hosts: service
+- hosts: all
   gather_facts: no
   tasks:
     - name: Config gcp
@@ -6,6 +6,16 @@
         name: common
         tasks_from: config_gcp.yaml
 
+- hosts: service
+  gather_facts: no
+  tasks:
     - name: Deploy service
       include_role: 
         name: DeployService
+
+- hosts: IIS
+  gather_facts: no
+  tasks:
+    - name: Deploy webstie
+      include_role: 
+        name: DeployIIS

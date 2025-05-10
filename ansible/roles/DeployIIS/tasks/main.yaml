@@ -1,10 +1,10 @@
 - name: Przygotowanie środowiska
   include_tasks: prepare_env.yaml
 
-- name: Stop/stworzenie serwisu
-  include_tasks: manage_service.yaml
+- name: Stop/stworzenie pooli i site
+  include_tasks: manage_iis.yaml
   vars:
-    serwis_status: stopped
+    pool_status: stopped
 
 - name: Pobranie paczki
   include_role: 
@@ -16,4 +16,4 @@
 - name: Uruchomienie serwisu
   include_tasks: manage_service.yaml
   vars:
-    serwis_status: started
+    pool_status: started

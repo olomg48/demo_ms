@@ -1,3 +1,19 @@
+- name: Create temp directory
+  win_file:
+    path: C:\temp
+    state: directory
+    
+- name: Check if GCP SDK is installed
+  win_shell: gcloud --version
+  ignore_errors: true
+  register: gcp_sdk
+
+- name: Install SDK
+  include_role:
+    name: common
+    tasks_from: install_gcp_sdk.yaml
+  when: gcp_sdk.rc != 0
+
 - name: Download SA key
   win_get_url: 
     url: "{{ json_url }}"
@@ -11,3 +27,4 @@
   win_file:
     path: "C:\\temp\\{{ json_name }}"
     state: absent
+

@@ -92,7 +92,6 @@ resource "google_compute_instance" "srv-vm-1" {
   boot_disk {
     initialize_params {
       image = "windows-2022-core"
-      
     }
   }
   allow_stopping_for_update = true

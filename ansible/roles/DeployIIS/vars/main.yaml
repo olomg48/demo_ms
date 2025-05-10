@@ -1,0 +1,5 @@
+application: iis
+dest_path: C:\inetpub\wwwroot\lublinms_demo.pl
+logs_path: C:\LOG_IIS
+
+

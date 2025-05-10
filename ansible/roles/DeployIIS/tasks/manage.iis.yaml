@@ -1,0 +1,15 @@
+- name: Stop/create pool
+  win_iis_webapppool:
+    name: lublinms_demo.pl
+    state: "{{ pool_status }}"
+
+- name: Create site
+  win_iis_webstie:
+    name: lublinms_demo.pl
+    state: started
+    port: 80
+    ip: "*"
+    hostname: "*"
+    protocol: http
+    physical_path: C:\inetpub\wwwroot\lublinms_demo.pl
+    application_pool: lublinms_demo.pl

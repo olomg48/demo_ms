@@ -1,0 +1,21 @@
+- name: Install IIS feature
+  ansible.windows.win_feature:
+    name: Web-Server
+    state: present
+    include_sub_features: yes
+    include_management_tools: yes
+
+- name: Create sites directory
+  win_file:
+    path: "{{ dest_path }}"
+    state: directory
+
+- name: Create prerequisits directory
+  win_file:
+    path: C:\prerequisits
+    state: directory
+
+- name: Create log directory
+  win_file:
+    path: "{{ logs_path }}"
+    state: directory
