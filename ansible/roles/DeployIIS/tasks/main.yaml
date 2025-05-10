@@ -14,6 +14,6 @@
     download_dest_path: "{{ dest_path }}"
 
 - name: Uruchomienie serwisu
-  include_tasks: manage_service.yaml
+  include_tasks: manage_iis.yaml
   vars:
     pool_status: started
