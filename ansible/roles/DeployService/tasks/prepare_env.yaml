@@ -23,6 +23,11 @@
     tasks_from: config_gcp.yaml
   when: gcp_auth.stdout == ""
 
+- name: Install prerequisits
+  include_tasks: install_prereq.yaml
+  loop: "{{ prerequisits }}"
+  loop_control:
+    loop_var: prereq
 
 
     
