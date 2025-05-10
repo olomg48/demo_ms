@@ -14,4 +14,4 @@
       win_package:
         path: "{{ prereq.path }}"
         product_id: "{{ prereq.product_code }}"
-        state: preent
+        state: present
